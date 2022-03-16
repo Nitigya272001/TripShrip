@@ -1,0 +1,56 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.search-box {
+    height: 20vh;
+    width: 60vw;
+    border: 2px solid black;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* padding-right: 2vw;*/
+}
+
+.city-input {
+    font-size: 2vmax !important;
+    width : 30vw !important;
+    height: 7vh !important;
+    outline: none;
+    border: 1.8px solid !important;
+}
+
+.city-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    /* border-bottom: 0px solid !important; */
+}
+
+.suggestion-city-item {
+    height: 4vh;
+    align-items: center;
+    padding-left: 1vw;
+}
+
+.suggestion-city-item:hover {
+    cursor: pointer;
+    background-color: #cceeeb;
+}
+
+.suggestion-cities {
+    width: 60vw;
+    padding-left: 3vw;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border: 2px solid black;
+    border-radius: 12px;
+}
+
+.search-button {
+    height: 7vh;
+    width : 15vw;
+    font-size: 3vmin !important;
+}

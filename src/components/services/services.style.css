@@ -1,0 +1,11 @@
+.main-page {
+    display: flex;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .ourRow {
+    padding-left: 10vw;
+    padding-right: 10vw;
+} */
