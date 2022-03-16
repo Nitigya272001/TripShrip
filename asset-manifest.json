@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/TripShirp/static/css/main.53e953e8.css",
+    "main.js": "/TripShirp/static/js/main.02441d32.js",
+    "index.html": "/TripShirp/index.html",
+    "main.53e953e8.css.map": "/TripShirp/static/css/main.53e953e8.css.map",
+    "main.02441d32.js.map": "/TripShirp/static/js/main.02441d32.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.53e953e8.css",
+    "static/js/main.02441d32.js"
+  ]
+}
