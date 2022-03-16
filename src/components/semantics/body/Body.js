@@ -61,7 +61,7 @@ const Body = () => {
                 }
             });
         getLoggedIn(user);    
-        navigate("/TripShrip/TripShrip");
+        navigate("/");
     };
 
     const handleSignup = () => {
@@ -81,7 +81,7 @@ const Body = () => {
                 }
             });
         getLoggedIn(user);
-        navigate("/TripShrip/TripShrip");
+        navigate("/");
     };
 
     const handleLogout = () =>{
@@ -93,7 +93,7 @@ const Body = () => {
                 // An error happened.
               });
             getLoggedIn(undefined);
-            navigate("/TripShrip/TripShrip");  
+            navigate("/");  
     };
 
     const authListener = () =>{
@@ -117,8 +117,8 @@ const Body = () => {
     <Box sx={ { backgroundColor: "#fafafa"}}>
         <Header  handleLogout={handleLogout}/>
             <Routes>
-                <Route exact path="/TripShrip/" element={<Homepage />} />
-                <Route exact path="/TripShrip/login" element={<Loginform 
+                <Route exact path="/" element={<Homepage />} />
+                <Route exact path="/login" element={<Loginform 
                   email={email} 
                   setEmail={setEmail} 
                   password = {password} 
@@ -130,16 +130,16 @@ const Body = () => {
                   emailError={emailError}
                   passwordError = {passwordError}
                   />} />
-                <Route exact path="/TripShrip/groups" element={<> Your Groups </>} />
-                <Route exact path="/TripShrip/services" element={<Services />} />
-                <Route exact path="/TripShrip/services/guides/:city" element={<Guide />} />
-                <Route exact path="/TripShrip/services/parking/:city" element={<Parking />} />
-                <Route exact path="/TripShrip/services/rent/:city" element={<Rent />} />
-                <Route exact path="/TripShrip/travel_blogs" element={<TravelBlogs />} />
-                <Route exact path="/TripShrip/travel_blogs/add_blog" element={<BlogForm />} />
-                <Route exact path="/TripShrip/guide_register" element={<GuideForm />} />
-                <Route exact path="/TripShrip/rent_register" element={<RentForm />} />
-                <Route exact path="/TripShrip/trip_groups" element={<TripGroups />} />
+                <Route exact path="/groups" element={<> Your Groups </>} />
+                <Route exact path="/services" element={<Services />} />
+                <Route exact path="/services/guides/:city" element={<Guide />} />
+                <Route exact path="/services/parking/:city" element={<Parking />} />
+                <Route exact path="/services/rent/:city" element={<Rent />} />
+                <Route exact path="/travel_blogs" element={<TravelBlogs />} />
+                <Route exact path="/travel_blogs/add_blog" element={<BlogForm />} />
+                <Route exact path="/guide_register" element={<GuideForm />} />
+                <Route exact path="/rent_register" element={<RentForm />} />
+                <Route exact path="/trip_groups" element={<TripGroups />} />
             </Routes>
         <Footer />
     </Box>

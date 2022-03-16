@@ -19,7 +19,7 @@ function ScrollToTop() {
 function App() {
   return (
     <AuthContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/TripShrip">
         <ScrollToTop />
         <Body />
       </BrowserRouter>
