@@ -16,27 +16,29 @@ const Loginform = (props) => {
 
     const useStyles = makeStyles(theme => ({
         root: {
-            marginTop:'20vh',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
             color : "blueviolet",
+            minHeight: "92vh"
         },
     }));
     const classes = useStyles();
     return (
         <>
             <Container className={classes.root}>
-                <Paper component={Box} width="35%" mx="auto" p={4} boxShadow={10}>
-                    <Typography variant = "h5" justifyContent="space-between" >Welcome, please sign in first!</Typography>
+                <Paper component={Box} mx="auto" p={4} boxShadow={10}>
+                    <Typography variant = "h5" justifyContent="space-between" >Welcome, get yourself in!</Typography>
                     <form>
                         <TextField
                             id="standard-basic"
                             label="Email"
                             variant="standard"
                             margin="normal"
-                            required value={email}
+                            required
+                            autoComplete="email"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             fullWidth />
 

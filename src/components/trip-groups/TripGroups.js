@@ -5,19 +5,12 @@ import GroupCard from './GroupCard';
 
 const TripGroups = () => {
   return (
-    <Grid container style={{minHeigh:"90vh"}}>
-        <Grid item container> 
-            <Grid item> Your Groups </Grid>
-        </Grid >
-        <Grid item container style={{minHeigh:"90vh"}}> 
-            <NewGroupCard />
-            <GroupCard name="Trip to Goa"/>
-            <GroupCard name="Trip to Goa"/>
-            <GroupCard name="Trip to Goa"/>
-            <GroupCard name="Trip to Goa"/>
-            <GroupCard name="Trip to Goa"/>
-            <GroupCard name="Trip to Goa"/>
-        </Grid >
+    <Grid container style={{padding:"8px",minHeight:"94vh"}} spacing={2} alignItems="center">
+          <Grid item sm="4" xs="10"><NewGroupCard /></Grid>
+          <Grid item sm="4" xs="10"><GroupCard name="Trip to Goa"/></Grid>
+          <Grid item sm="4" xs="10"><GroupCard name="Trip to Goa"/></Grid>
+          <Grid item sm="4" xs="10"><GroupCard name="Trip to Goa"/></Grid>
+          <Grid item sm="4" xs="10"><GroupCard name="Trip to Goa"/></Grid>
     </Grid>
   )
 }

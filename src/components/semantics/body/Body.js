@@ -47,6 +47,10 @@ const Body = () => {
         Fire
             .auth()
             .signInWithEmailAndPassword(email,password)
+            .then(() => {
+                getLoggedIn(user);    
+                navigate("/");
+            })
             .catch(err => {
                 switch(err.code)
                 {
@@ -60,8 +64,6 @@ const Body = () => {
                         break;    
                 }
             });
-        getLoggedIn(user);    
-        navigate("/");
     };
 
     const handleSignup = () => {
@@ -69,6 +71,10 @@ const Body = () => {
         Fire
             .auth()
             .createUserWithEmailAndPassword(email,password)
+            .then(() => {
+                getLoggedIn(user);    
+                navigate("/");
+            })
             .catch(err => {
                 switch(err.code)
                 {
@@ -80,8 +86,6 @@ const Body = () => {
                         break;    
                 }
             });
-        getLoggedIn(user);
-        navigate("/");
     };
 
     const handleLogout = () =>{
@@ -89,11 +93,10 @@ const Body = () => {
             Fire.auth().signOut().then(function() {
                 // Sign-out successful.
                 getLoggedIn(undefined);
+                navigate("/");  
               }).catch(function(error) {
                 // An error happened.
               });
-            getLoggedIn(undefined);
-            navigate("/");  
     };
 
     const authListener = () =>{
