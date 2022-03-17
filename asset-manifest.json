@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/TripShrip/static/css/main.53e953e8.css",
-    "main.js": "/TripShrip/static/js/main.2e3f34a8.js",
+    "main.js": "/TripShrip/static/js/main.5a2ae971.js",
     "index.html": "/TripShrip/index.html",
     "main.53e953e8.css.map": "/TripShrip/static/css/main.53e953e8.css.map",
-    "main.2e3f34a8.js.map": "/TripShrip/static/js/main.2e3f34a8.js.map"
+    "main.5a2ae971.js.map": "/TripShrip/static/js/main.5a2ae971.js.map"
   },
   "entrypoints": [
     "static/css/main.53e953e8.css",
-    "static/js/main.2e3f34a8.js"
+    "static/js/main.5a2ae971.js"
   ]
 }
