@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import FeatureCard from './FeatureCard';
 import { Grid } from '@mui/material';
 import './Homepage.css';
+import AuthContext from "../../auth/AuthContext";
 
 const CardsContent = [
     {

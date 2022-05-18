@@ -9,6 +9,16 @@ const Register = () => {
 
     const navigate = useNavigate()
 
+    const [ days, setDays] = useState({
+        Monday : false,
+        Tuesday : false,
+        Wednesday : false,
+        Thrusday : false,
+        Friday : false,
+        Saturday : false,
+        Sunday : false
+    })
+
     const [ user, setUser] = useState({
         profile:"",
         name: "",
@@ -16,7 +26,6 @@ const Register = () => {
         email:"",
         mobile:"",
         language: [],
-        days: [],
         license:0,
         description:"",
         startHour:"",
@@ -35,13 +44,17 @@ const Register = () => {
         setUser({...user, profile: e.target.files[0]});
     }
 
+    const handleCheckboxChange = (e) => {
+        setDays({...days, [e.target.name] : (e.target.value === 'true')});
+        console.log(days);
+    }
+
     const register = (e) => {
         e.preventDefault();
 
-        let {profile,name,city,email,mobile,language,days,description,startHour,endHour,license} = user;
+        let {profile,name,city,email,mobile,language,description,startHour,endHour,license} = user;
 
         language = language.split(" ");
-        days = days.split(" ");
 
         const imageData = new FormData();
         imageData.append('file', profile);
@@ -56,6 +69,11 @@ const Register = () => {
         .then( async (data) => {
             const collectionName = city + '-guides';
             try {
+                let daysarr = [];
+                Object.entries(days).forEach(([key, value]) => {
+                    if(value===true) daysarr.push(key);
+                });
+                 
                 await addDoc(collection(db, collectionName), {
                     profile:data.url,
                     name:name,
@@ -63,7 +81,7 @@ const Register = () => {
                     email:email,
                     mobile:mobile,
                     language:language,
-                    days:days,
+                    days:daysarr,
                     description:description,
                     startHour:startHour,
                     endHour:endHour,
@@ -88,7 +106,16 @@ const Register = () => {
             <input type="text" name="city" value={user.city} placeholder="Your City" onChange={ handleChange } required ></input>
             <input type="text" name="email" value={user.email} placeholder="Your Email" onChange={ handleChange } required ></input>
             <input type="text" name="mobile" value={user.mobile} placeholder="Your Mobile" onChange={ handleChange } required ></input>
-            <input type="text" name="days" value={user.days} placeholder="Days Available(Space sperated)" onChange={ handleChange } required ></input>
+            <label> Days Available : </label>
+            <br></br>
+            <label style={{display:'inline'}}>Monday:</label><input type ="checkbox" onChange={handleCheckboxChange}  className="days" name="Monday" value={!days.Monday}></input>
+            <label style={{display:'inline'}}>Tuesday:</label><input type ="checkbox" onChange={handleCheckboxChange} className="days" name="Tuesday" value={!days.Tuesday}></input>
+            <label style={{display:'inline'}}>Wednesday:</label><input type ="checkbox" onChange={handleCheckboxChange} className="days" name="Wednesday" value={!days.Wednesday}></input>
+            <label style={{display:'inline'}}>Thursday:</label><input type ="checkbox" onChange={handleCheckboxChange} className="days" name="Thursday" value={!days.Thrusday}></input>
+            <br></br>
+            <label style={{display:'inline'}}>Friday:</label><input type ="checkbox" onChange={handleCheckboxChange} className="days" name="Friday" value={!days.Friday}></input>
+            <label style={{display:'inline'}}>Saturday:</label><input type ="checkbox" onChange={handleCheckboxChange} className="days" name="Saturday" value={!days.Saturday}></input>
+            <label style={{display:'inline'}}>Sunday:</label><input type ="checkbox" onChange={handleCheckboxChange} className="days" name="Sunday" value={!days.Sunday}></input>
             <input type="text" name="language" value={user.language} placeholder="Your Preferred Languages(Space Seperated)" onChange={ handleChange } required ></input>
             <textarea name="description" wrap="hard" rows={7} cols={70} placeholder="Tell us about the tour you will provide, what are the main attractions of focus, etc." value={user.description} onChange={ handleChange } />
             

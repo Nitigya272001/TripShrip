@@ -1,6 +1,8 @@
 import React from "react";
-import { Container, Box, Paper, Button, TextField, Typography } from '@mui/material';
+import { Container, Box, Paper, Button, TextField, Typography, Grid } from '@mui/material';
 import { makeStyles } from "@mui/styles";
+import Fire from '../../Firebase/Fire';
+
 const Loginform = (props) => {
     const {
         email,
@@ -13,6 +15,20 @@ const Loginform = (props) => {
         setHasAccount,
         emailError,
         passwordError } = props;
+
+        const forgotPassword = (Email) => {
+
+            if(Email === null || Email === undefined) alert("error");
+            else {
+                Fire.auth().sendPasswordResetEmail(Email)
+                .then(function () {
+                    alert('Please check your email...')
+                }).catch(function (e) {
+                    alert(e);
+                }) 
+            }
+        }
+            
 
     const useStyles = makeStyles(theme => ({
         root: {
@@ -28,7 +44,7 @@ const Loginform = (props) => {
     return (
         <>
             <Container className={classes.root}>
-                <Paper component={Box} mx="auto" p={4} boxShadow={10}>
+                <Paper component={Box} p={4} boxShadow={10}>
                     <Typography variant = "h5" justifyContent="space-between" >Welcome, get yourself in!</Typography>
                     <form>
                         <TextField
@@ -41,8 +57,13 @@ const Loginform = (props) => {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             fullWidth />
-
-                        <p className="errorMsg">{emailError}</p>
+                        {emailError  ? (
+                            <>
+                                <p className="errorMsg">{emailError}</p>
+                            </>
+                        ) : (
+                            null
+                        )}
                         <TextField
                             id="standard-basic"
                             label="Password"
@@ -53,28 +74,37 @@ const Loginform = (props) => {
                             required
                             value={password}
                             onChange={e => setPassword(e.target.value)} />
-
-                        <p className="errorMsg">{passwordError}</p>
-
-                        <div >
-                            {hasAccount ? (
-                                <>
-                                    <Button variant="contained" onClick={handleLogin}>Sign in</Button>
-                                    <p>Don't have an account ?
+                        {passwordError  ? (
+                            <>
+                                <p className="errorMsg">{passwordError}</p>
+                            </>
+                        ) : (
+                            null
+                        )}
+                        {hasAccount ? (
+                            <>
+                                <Button variant="contained" fullWidth onClick={handleLogin}>Sign in</Button>
+                                <Grid container justifyContent="space-between">
+                                    <Grid item><Button size="small" variant="text" onClick={() => forgotPassword(email)}>Forgot Password</Button></Grid>
+                                    <Grid item>Don't have an account?
                                         <span
                                             onClick={() => setHasAccount(!hasAccount)}>
-                                            <Button variant="text">Sign up</Button>
+                                            <Button size="small" variant="text">Sign up</Button>
                                         </span>
-                                    </p>
-                                </>
-                            ) : (
-                                <>
-                                    <Button variant="contained" onClick={handleSignup}>Sign up</Button>
-                                    <p>Have an account ? <span onClick={() => setHasAccount(!hasAccount)}><Button variant="text">Sign in</Button></span></p>
-                                </>
-                            )}
-                        </div>
-
+                                    </Grid>
+                                </Grid>
+                            </>
+                        ) : (
+                            <>
+                                <Button variant="contained" fullWidth onClick={handleSignup}>Sign up</Button>
+                                <p>Already have an account ? 
+                                    <span 
+                                        onClick={() => setHasAccount(!hasAccount)}>
+                                        <Button variant="text">Sign in</Button>
+                                    </span>
+                                </p>
+                            </>
+                        )}
                     </form>
                 </Paper>
             </Container>

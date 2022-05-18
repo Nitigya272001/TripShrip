@@ -71,9 +71,10 @@ const Body = () => {
         Fire
             .auth()
             .createUserWithEmailAndPassword(email,password)
-            .then(() => {
-                getLoggedIn(user);    
-                navigate("/");
+            .then((userCredential) => {
+                userCredential.user.sendEmailVerification();
+                Fire.auth().signOut();
+                alert("Check the email sent to you and verify it.");
             })
             .catch(err => {
                 switch(err.code)
