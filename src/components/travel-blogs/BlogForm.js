@@ -28,8 +28,8 @@ const BlogForm = () => {
     const getImage = (files)=>{
         const formdata =new FormData();
         formdata.append("file",files[0]);
-        formdata.append("upload_preset","x8enycrc")
-        axios.post("https://api.cloudinary.com/v1_1/desjmubi1/image/upload",formdata).then((res)=>{
+        formdata.append("upload_preset","minorproject")
+        axios.post("https://api.cloudinary.com/v1_1/diuazm4pi/image/upload",formdata).then((res)=>{
             setImg(res.data.secure_url);
             console.log(img);
         })

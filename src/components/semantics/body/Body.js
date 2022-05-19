@@ -17,6 +17,7 @@ import GuideForm from '../../guides/GuideForm';
 import TravelBlogs from '../../travel-blogs/TravelBlogs';
 import BlogForm from '../../travel-blogs/BlogForm';
 import RentForm from '../../rent/RentForm';
+import HomeStay from '../../home-stay/HomeStay';
 import HomeStayForm from '../../home-stay/HomeStayForm';
 import AuthContext from "../../auth/AuthContext";
 import Homepage from "./Homepage";
@@ -141,6 +142,7 @@ const Body = () => {
                 <Route exact path="/groups" element={<> Your Groups </>} />
                 <Route exact path="/services" element={<Services />} />
                 <Route exact path="/services/guides/:city" element={<Guide />} />
+                <Route exact path="/services/home_stay/:city" element={<HomeStay />} />
                 <Route exact path="/services/parking/:city" element={<Parking />} />
                 <Route exact path="/services/rent/:city" element={<Rent />} />
                 <Route exact path="/travel_blogs" element={<TravelBlogs />} />
