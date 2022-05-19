@@ -11,6 +11,9 @@ const serCon = [
         title : "Get your Guides or Tours",
     },
     {
+        title : "Find Home Stays",
+    },
+    {
         title : "Online Parking Booking",
     },
     {
@@ -41,8 +44,9 @@ const Services = () => {
                     </Grid>
                     <Grid item container direction='column' spacing={2}>
                         <Grid item><ServiceCard title={serCon[0].title} description={serCon[0].desc} linkTo = {`/services/guides/${city}`} city={city} /></Grid>
-                        <Grid item><ServiceCard title={serCon[1].title} description={serCon[1].desc} linkTo = {`/services/parking/${city}`} city={city} /></Grid>
-                        <Grid item><ServiceCard title={serCon[2].title} description={serCon[2].desc} linkTo = {`/services/rent/${city}`} city={city} /></Grid>
+                        <Grid item><ServiceCard title={serCon[1].title} description={serCon[1].desc} linkTo = {`/services/home_stay/${city}`} city={city} /></Grid>
+                        <Grid item><ServiceCard title={serCon[2].title} description={serCon[2].desc} linkTo = {`/services/parking/${city}`} city={city} /></Grid>
+                        <Grid item><ServiceCard title={serCon[3].title} description={serCon[3].desc} linkTo = {`/services/rent/${city}`} city={city} /></Grid>
                     </Grid>
                 </Grid>
             </Grid>

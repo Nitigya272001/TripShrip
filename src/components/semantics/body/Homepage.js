@@ -11,11 +11,6 @@ const CardsContent = [
         linkTo : "/travel_blogs"
     },
     {
-        title: "--------",
-        description : "----Travel groups, travel agencies!!-----------------------",
-        linkTo : "/services"
-    },
-    {
         title: "Trip Planner, Group Planner",
         description : "Your groups to plan your trips, track location and much more",
         linkTo : "/trip_groups"
@@ -29,6 +24,11 @@ const CardsContent = [
         title: "Register as Guide",
         description : "Want to be a guide?, You can create yourself a profile!",
         linkTo : "/guide_register"
+    },
+    {
+        title: "Put your home for home stay",
+        description : "Want to put your extra space/home/room for stay?, Put some images and contact.",
+        linkTo : "/home_stay_add"
     },
     {
         title: "Put vehicles on rent",

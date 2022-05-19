@@ -23,7 +23,7 @@ function Guide() {
 
         let diffDays = parseInt((d2-d1) / (1000 * 60 * 60 * 24), 10);
 
-        let collectionName = city + "-guides";
+        let collectionName = city.toLowerCase() + "-guides";
         let guidesSnapshot = await getDocs(collection(db, collectionName));
         let guidesList =  guidesSnapshot.docs.map(doc => doc.data());
 

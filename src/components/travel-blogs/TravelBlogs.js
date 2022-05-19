@@ -4,15 +4,15 @@ import { Button, Grid } from "@mui/material";
 import BlogsList from './BlogsList';
 const TravelBlogs = () => {
     return (
-        <Grid container alignItems='center' sx={{padding:'10px',minHeight:'90vh'}}> 
-            <Grid container sx={{height:'8vh',paddingRight:'20px'}} >
+        <Grid container alignItems='center' justifyContent='center' sx={{padding:'10px'}}> 
+            <Grid item container justifyContent='center' sx={{height:'8vh',paddingRight:'20px',width:"100%"}} >
                 <Grid item>
-                    <Button variant="outlined" component={Link} to="/travel_blogs/add_blog">
+                    <Button variant="contained"  color="primary" component={Link} to="/travel_blogs/add_blog">
                         Add Your Blog
                     </Button>
                 </Grid>
             </Grid>
-            <Grid container sx={{height:'75vh'}}>
+            <Grid item container  justifyContent='center' sx={{minHeight:'75vh' ,width:"100%"}}>
                 <Grid item >
                     <BlogsList />
                 </Grid>

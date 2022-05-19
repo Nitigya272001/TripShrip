@@ -28,7 +28,7 @@ function Footer(props) {
       <AppBar style={classes.root2} position="static">
         <Toolbar>
           <Typography variant="h5" style={classes.title}>
-            Made By - Name (LinkedIn)
+            @Copyright - TripShrip
           </Typography>
         </Toolbar>
       </AppBar>

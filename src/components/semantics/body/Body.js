@@ -17,6 +17,7 @@ import GuideForm from '../../guides/GuideForm';
 import TravelBlogs from '../../travel-blogs/TravelBlogs';
 import BlogForm from '../../travel-blogs/BlogForm';
 import RentForm from '../../rent/RentForm';
+import HomeStayForm from '../../home-stay/HomeStayForm';
 import AuthContext from "../../auth/AuthContext";
 import Homepage from "./Homepage";
 import TripGroups from "../../trip-groups/TripGroups";
@@ -57,10 +58,10 @@ const Body = () => {
                     case "auth/invalid-email":
                     case "auth/user-disabled":
                     case "auth/user-not-found":
-                        setEmailError(err.message);
+                        setEmailError("Username Invalid");
                         break;  
                     case "auth/wrong-password":
-                        setPasswordError(err.message);
+                        setPasswordError("Wrong Password");
                         break;    
                 }
             });
@@ -74,6 +75,7 @@ const Body = () => {
             .then((userCredential) => {
                 userCredential.user.sendEmailVerification();
                 Fire.auth().signOut();
+
                 alert("Check the email sent to you and verify it.");
             })
             .catch(err => {
@@ -81,10 +83,12 @@ const Body = () => {
                 {
                     case "auth/email-already-in-use":
                     case "auth/invalid-email":
-                        setEmailError(err.message);
+                        setEmailError("Invalid Email");
                     case "auth/weak-password":
-                        setPasswordError(err.message);
-                        break;    
+                        setPasswordError("Password Error, Try strong one!");
+                        break;
+                    default:
+                        break;
                 }
             });
     };
@@ -143,6 +147,7 @@ const Body = () => {
                 <Route exact path="/travel_blogs/add_blog" element={<BlogForm />} />
                 <Route exact path="/guide_register" element={<GuideForm />} />
                 <Route exact path="/rent_register" element={<RentForm />} />
+                <Route exact path="/home_stay_add" element={<HomeStayForm />} />
                 <Route exact path="/trip_groups" element={<TripGroups />} />
             </Routes>
         <Footer />

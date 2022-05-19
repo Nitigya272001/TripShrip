@@ -67,7 +67,7 @@ const Register = () => {
         })
         .then( resp => resp.json()) 
         .then( async (data) => {
-            const collectionName = city + '-guides';
+            const collectionName = city.toLowerCase() + '-guides';
             try {
                 let daysarr = [];
                 Object.entries(days).forEach(([key, value]) => {

@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+
 import Fire from "../../Firebase/Fire"
+import axios from "axios"
+
 // import './Interviewie.css';
+
 import { Paper, Box, Typography, TextField, Grid, Button, } from "@mui/material";
 const BlogForm = () => {
+    const [img,setImg]=useState()
     const [blog, setblog] = useState({
+        name: "",
         title: "",
         blogtext: "",
-        name: "",
-        images : "",
-        location : "",
+        image : "",
         likes : 0,
     }
     );
@@ -21,26 +25,34 @@ const BlogForm = () => {
 
         setblog({ ...blog, [name]: value })
     };
+    const getImage = (files)=>{
+        const formdata =new FormData();
+        formdata.append("file",files[0]);
+        formdata.append("upload_preset","x8enycrc")
+        axios.post("https://api.cloudinary.com/v1_1/desjmubi1/image/upload",formdata).then((res)=>{
+            setImg(res.data.secure_url);
+            console.log(img);
+        })
+    }
     const postData = async (e) => {
         e.preventDefault();
 
         let res = 0;
-        const { title, blogtext, name, images, location, likes } = blog;
-        if ((title && blogtext && name && location)) {
+        const { title, blogtext, name, image, likes } = blog;
+        if ((title && blogtext && name)) {
             let collectionName = "travel-blogs"
             Fire.firestore().collection(collectionName).add({
                 title: title,
                 blogtext: blogtext,
                 name: name,
-                location: location,
                 likes: likes,
-                images : images
+                images : img
             });
             res = true;
         }
         if (res) {
             alert("Thanks for sharing your experience!");
-            navigate('/blog');
+            navigate('/travel_blogs');
         }
         else {
             alert('Please fill complete form');
@@ -97,10 +109,9 @@ const BlogForm = () => {
                             />
                         </Grid>
                         <Grid item marginTop={4}>
-                            Upload some images(optional)
+                          <input type="file" name="image"  onChange={(event)=>{getImage(event.target.files);}} />
                         </Grid>
                     </Grid>
-
                     <Button
                         variant="contained"
                         color="primary"
